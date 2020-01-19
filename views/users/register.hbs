@@ -1,0 +1,71 @@
+<div class="newborder p-5 rounded">
+  <form  method="POST" action="/users">
+      <h1>Register</h1>
+      {{!-- Error --}}
+      {{#if message}}
+      <div class="alert alert-danger" role="alert">
+          {{message.message}}  
+      </div>
+    {{/if}}
+      {{!-- name --}}
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" class="form-control"
+      name="name" id="name" placeholder="Enter Full-Name" required>
+    </div>
+      {{!-- Gender --}}
+    <div>
+      <label for="gender">Gender</label><br>
+      <input type="radio" id="male"
+      name="gender" value="male" checked>
+      <label for="male">Male</label>
+      <input type="radio" id="female"
+      name="gender" value="female">
+      <label for="female">Female</label>
+    </div>
+    {{!-- Date of birth --}}
+    <div class="form-group">
+        <label for="dob">Date Of Birth</label>
+        <input type="text" name="dob" id="dob"
+        class="mydate form-control full-width" placeholder="Date of Birth" required/>
+      </div>
+    {{!-- Department --}}
+    <div class="form-group">
+      <label for="department">Department</label>
+      <select name="department" class="form-control" id="department" required> 
+        <option value="BCA">BCA</option>
+        <option value="MCA">MCA</option>
+      </select>  
+    </div>
+    {{!-- Email --}}
+    <div class="form-group">
+      <label for="name">Email</label>
+      <input type="email" class="form-control"
+      name="email" id="email" placeholder="Email" required>
+    </div>
+    {{!-- Phone --}}
+    <div class="form-group">
+      <label for="name">Phone</label>
+      <input type="tel" class="form-control"
+      name="phone" id="phone" placeholder="Phone Number"
+      pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+    </div>
+    {{!-- submit --}}
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <p class="text-center mt-2">Go to student details<strong><a href="/users/details">
+    Student Details</a></strong></p>
+  </form>
+</div>
+{{!-- Date picker  --}}
+<script type="text/javascript">
+$("#dob").datepicker({
+       format:'yyyy-mm-dd',
+       autoclose: true,
+       changeMonth: true,
+       changeYear: true,
+       maxDate: 0,
+       yearRange: '1950:2012'  
+}); 
+</script>

@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #9999FF !important; */
+  min-height: 100vh !important;
+}
+a {
+  color: #00B7FF;
+}
+.form-control{
+  min-width: 380px !important ;
+}
+.newborder{
+  border-top: 10px solid red;
+  /* background-color: lightgrey; */
+  box-shadow: 5px 5px 20px 5px darkgray;
+}
+
+.tblhdborder{
+  border-top: 6px solid red;
+  /* background-color: lightgrey; */
+  box-shadow: 5px 5px 20px 5px darkgray;
+}

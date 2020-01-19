@@ -1,0 +1,86 @@
+<div>
+  <strong class="float-right"><a class="text-center text-white btn btn-success" href="/users">Register a new Student</a></strong>
+  <h4><strong><p class="text-center">Search and Update</p></strong></h4>
+  <form class="/search" id="EmployeeForm" class="form-horizontal" method="post"  role="form">
+      <div class="form-group text-center d-flex justify-content-center">
+          <input type="text" class="form-control w-25 mr-3" name="name"
+            id="searchName" placeholder="Search name...">
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </input>
+      </div>
+  </form>
+<table class="table table-bordered tblhdborder rounded ">
+    <col width="150">
+    <col width="150">
+    <col width="150">
+    <col width="150">
+    <col width="150">
+    <col width="150">
+    <col width="150">
+    <thead class="thead-dark ">
+      <tr>
+        <th class="text-center">Name</th>
+        <th class="text-center">Gender</th>
+        <th class="text-center">Age</th>
+        <th class="text-center">Department</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Phone number</th>
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each user}}
+        {{#each this}}
+        {{#if this.name}}
+      <tr>
+        <th>{{this.name}}</th>
+        <th>{{this.gender}}</th>
+        <th>{{this.age}}</th>
+        <th>{{this.department}}</th>
+        <th>{{this.email}}</th>
+        <th>{{this.phone}}</th>
+        <th class="d-flex justify-content-center">
+        <a  href="/users/update/{{this._id}}" class="ml-3 mr-4">
+        <i class="fa fa-edit"></i></a>
+        <a  href="/users/delete/{{this._id}}" class="mr-3"> 
+        <i class="fa fa-trash"></i></a>
+        </form>
+        </th>
+      </tr>
+        {{/if}}
+        {{/each}}
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<script>
+  $(function(){
+    $('#searchName').autocomplete({
+      source: function(req,res){
+
+        $.ajax({
+          url:"autocomplete/",
+          dataType:"jsonp",
+          type:"GET",
+          data:req,
+          success: function(data){
+            console.log(data)
+            res(data)
+
+          },
+          error: function(err){
+            console.log(err.status);
+          }
+        });
+      },
+
+      minLength:1,
+      select: function(event,ui){
+        console.log(ui)
+        if(ui.item){
+          $('#searchName').val(ui.item.label);
+        }
+      }
+    });
+  });
+</script> 

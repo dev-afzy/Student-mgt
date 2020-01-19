@@ -1,0 +1,64 @@
+<div class="newborder p-5 rounded">
+  <form action="/users/update/{{details.id}}" method="POST">
+      <h1>Update</h1>
+
+      {{!-- name --}}
+    <div class="form-group">
+    <label for="name">Full Name</label>
+    <input type="text" class="form-control"
+    name="name" id="name" value="{{details.name}}" placeholder="Enter Full-Name" required>
+    </div>
+
+    {{!-- Gender --}}
+    <div>
+    <label for="gender">Gender</label><br>
+    <input type="radio" id="male"
+      name="gender" value="male"
+      {{#if male}} checked {{/if}}>
+    <label for="male">Male</label>
+    <input type="radio" id="female"
+      name="gender" value="female" 
+    {{#unless male}} checked {{/unless}}>
+    <label for="female">Female</label>
+    </div>
+
+    {{!-- Date of birth --}}
+    <div class="form-group">
+        <label for="dob">Age</label>
+        <input type="number" name="dob" id="dob"
+        value="{{details.age}}" class="mydate form-control full-width" placeholder="Date of Birth" required/>
+    </div>
+
+    {{!-- Department --}}
+    <div class="form-group">
+    <label for="department">Department</label>
+    <select name="department" class="form-control" id="department" required> 
+        <option value="BCA" {{#if bca}} selected {{/if}} >BCA</option>
+        <option value="MCA" {{#unless bca}} selected {{/unless}} >MCA  </option>
+    </select>  
+    </div>
+
+    {{!-- Email --}}
+    <div class="form-group">
+    <label for="name">Email</label>
+    <input type="email" class="form-control"
+    name="email" value="{{details.email}}" id="email" placeholder="Email" required>
+    </div>
+
+    {{!-- Phone --}}
+    <div class="form-group">
+    <label for="name">Phone</label>
+    <input type="tel" class="form-control"
+    name="phone" id="phone" value="{{details.phone}}" placeholder="Phone Number"
+    pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+    </div>
+
+    {{!-- submit --}}
+    <div class="form-group text-center">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <p class="text-center mt-2">Go to student details<strong><a href="/users/details">
+    Student Details</a></strong></p>
+  </form>
+</div>
+</script>
